@@ -1,6 +1,6 @@
 {
 	"name": "directus-extension-stripe",
-	"description": "Please enter a description for your extension",
+	"description": "A Directus extension that supports building flows for Stripe webhooks",
 	"icon": "extension",
 	"version": "1.0.0",
 	"keywords": [
