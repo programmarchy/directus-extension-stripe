@@ -41,13 +41,11 @@ export default defineHook(({ init }, { env, database, services, logger, getSchem
   const { SettingsService, FieldsService, RelationsService } = services;
 
 	init('app.before', async () => {
-		const schema = await getSchema({
-      database,
-    });
-  
     const fieldsService = new FieldsService({
       knex: database,
-      schema,
+      schema: await getSchema({
+        database,
+      })
     });
 
 		for await (const field of stripeFields) {
@@ -59,7 +57,9 @@ export default defineHook(({ init }, { env, database, services, logger, getSchem
 
     const relationsService = new RelationsService({
       knex: database,
-      schema,
+      schema: await getSchema({
+        database,
+      })
     });
 
     for await (const relation of stripeRelations) {
@@ -68,7 +68,7 @@ export default defineHook(({ init }, { env, database, services, logger, getSchem
         await relationsService.createOne(relation);
       }
     }
-	});
+  });
 
   init('middlewares.before', ({ app }: Record<'app', Application>) => {
     app.use((req, res, next) => {

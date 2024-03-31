@@ -1,1 +1,0 @@
-import{defineOperationApp as e}from"@directus/extensions-sdk";const t=[],r=[],i=[],o=[],s=[],c=[],n=[e({id:"stripe-secret-key",name:"Stripe Secret Key",icon:"attach_money",description:"Returns the Stripe secret key configured for this project.",overview:()=>[],options:[{}]})];export{r as displays,t as interfaces,i as layouts,o as modules,n as operations,s as panels,c as themes};
