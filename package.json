@@ -1,0 +1,58 @@
+{
+	"name": "directus-extension-stripe",
+	"description": "Please enter a description for your extension",
+	"icon": "extension",
+	"version": "1.0.0",
+	"keywords": [
+		"directus",
+		"directus-extension",
+		"directus-extension-bundle"
+	],
+	"type": "module",
+	"files": [
+		"dist"
+	],
+	"directus:extension": {
+		"type": "bundle",
+		"path": {
+			"app": "dist/app.js",
+			"api": "dist/api.js"
+		},
+		"entries": [
+			{
+				"type": "hook",
+				"name": "stripe-hook",
+				"source": "src/stripe-hook/index.ts"
+			},
+			{
+				"type": "operation",
+				"name": "stripe-secret-key-operation",
+				"source": {
+					"app": "src/stripe-secret-key-operation/app.ts",
+					"api": "src/stripe-secret-key-operation/api.ts"
+				}
+			}
+		],
+		"host": "^10.10.0"
+	},
+	"scripts": {
+		"build": "directus-extension build",
+		"dev": "directus-extension build -w --no-minify",
+		"link": "directus-extension link",
+		"add": "directus-extension add"
+	},
+	"devDependencies": {
+		"@directus/extensions-sdk": "11.0.1",
+		"@directus/types": "^11.0.7",
+		"@types/express": "^4.17.21",
+		"@types/jsonwebtoken": "^9.0.6",
+		"@types/node": "^20.12.2",
+		"typescript": "^5.4.3",
+		"vue": "^3.4.21"
+	},
+	"dependencies": {
+		"body-parser": "^1.20.2",
+		"jsonwebtoken": "^9.0.2",
+		"stripe": "^14.23.0"
+	}
+}
