@@ -27,7 +27,7 @@ Or configure these properties in the Directus Settings page.
 
 <img width="1552" alt="flow" src="https://github.com/programmarchy/directus-extension-stripe/assets/622192/03cb3f74-62df-48f2-bd43-4b33b521077d">
 
-<img width="1552" alt="settings" src="https://github.com/programmarchy/directus-extension-stripe/assets/622192/a354e26d-57cf-4db6-8dfa-07eda60d530b">
+<img width="1552" alt="settings" src="https://github.com/programmarchy/directus-extension-stripe/assets/622192/ea5d7441-058c-4e0b-b9bf-acd05c40bbb3">
 
 ## Collaborators
 
