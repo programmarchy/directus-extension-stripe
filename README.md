@@ -1,5 +1,3 @@
-<!-- Please replace anything appearing between curly brackets with your submission's value.  -->
-
 # directus-extension-stripe
 
 This Directus extension enables you to build flows to handle Stripe webhooks, including support for verifying the Stripe webhook signature and Directus accountability tracking!
