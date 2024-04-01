@@ -7,9 +7,9 @@ type StripeSettings = {
 };
 
 export default defineOperationApi<Options>({
-	id: 'stripe-secret-key',
-	handler: async ({}, { env, database, services, getSchema }) => {
-		const { SettingsService } = services;
+  id: 'stripe-secret-key',
+  handler: async ({}, { env, database, services, getSchema }) => {
+    const { SettingsService } = services;
 
     const schema = await getSchema({
       database,
@@ -31,6 +31,6 @@ export default defineOperationApi<Options>({
       throw new Error('Stripe secret key is not set.');
     }
 
-		return stripeSecretKey;
-	},
+    return stripeSecretKey;
+  },
 });

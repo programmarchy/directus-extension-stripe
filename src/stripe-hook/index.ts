@@ -40,7 +40,7 @@ class StripeWebhookError extends Error {
 export default defineHook(({ init }, { env, database, services, logger, getSchema }) => {
   const { SettingsService, FieldsService, RelationsService } = services;
 
-	init('app.before', async () => {
+  init('app.before', async () => {
     const fieldsService = new FieldsService({
       knex: database,
       schema: await getSchema({
@@ -48,12 +48,12 @@ export default defineHook(({ init }, { env, database, services, logger, getSchem
       })
     });
 
-		for await (const field of stripeFields) {
-			const exists = await fieldsService.readOne(field.collection, field.field).catch(() => null);
-			if (!exists) {
-				await fieldsService.createField(field.collection, field);
-			}
-		}
+    for await (const field of stripeFields) {
+      const exists = await fieldsService.readOne(field.collection, field.field).catch(() => null);
+      if (!exists) {
+        await fieldsService.createField(field.collection, field);
+      }
+    }
 
     const relationsService = new RelationsService({
       knex: database,
