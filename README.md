@@ -23,6 +23,8 @@ Or configure these properties in the Directus Settings page.
 
 ## Screenshots
 
+https://github.com/programmarchy/directus-extension-stripe/assets/622192/0cdc92eb-375d-4f16-945a-43d561c3a80a
+
 <img width="1552" alt="flow" src="https://github.com/programmarchy/directus-extension-stripe/assets/622192/03cb3f74-62df-48f2-bd43-4b33b521077d">
 
 <img width="1552" alt="settings" src="https://github.com/programmarchy/directus-extension-stripe/assets/622192/ea5d7441-058c-4e0b-b9bf-acd05c40bbb3">
