@@ -5,9 +5,9 @@ This Directus extension enables you to build flows to handle Stripe webhooks, in
 ## Details
 
 - This project handles the tricky part of verifying a Stripe webhook by adding middleware to check the signature against the raw body.
-- Optionally, the middleware executes the Stripe webhook request as a Directus user, which allows you to control what the webhook can read and modify using Directus permissions, and track and log any collections or fields modified by the webhook.
+- Optionally, the middleware executes the Stripe webhook request as a Directus user, which allows you to control what the webhook can read and modify using Directus permissions, and track and log any data modified by the webhook.
 - The middleware verifies Stripe webhooks requests that can be fed into a Directus flow (with a webhook trigger) or a custom Directus endpoint extension.
-- The Stripe JavaScript SDK is used,
+- The Stripe JavaScript SDK is used.
 - I built a hook extension for the middleware, and a very simple operation that allows you to inject the Stripe secret key into your flow so you can use it in a Request operation to Stripe.
 - If given longer, I'd build out a more featured Stripe operation node that makes it easier to build Stripe requests.
 
