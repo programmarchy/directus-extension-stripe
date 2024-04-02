@@ -1,0 +1,16 @@
+{
+  "name": "example-directus",
+  "scripts": {
+    "start": "directus start",
+    "migrate": "directus database migrate:latest"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "directus": "^10.10.4",
+    "sqlite3": "^5.1.7"
+  },
+  "engine": {
+    "node": ">=18.18.0",
+    "pnpm": "~8.15"
+  }
+}
