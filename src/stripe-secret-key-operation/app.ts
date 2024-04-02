@@ -6,5 +6,5 @@ export default defineOperationApp({
 	icon: 'attach_money',
 	description: 'Returns the Stripe secret key configured for this project.',
 	overview: () => [],
-	options: [{}],
+	options: [],
 });
