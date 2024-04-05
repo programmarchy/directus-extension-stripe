@@ -8,7 +8,7 @@ https://github.com/programmarchy/directus-extension-stripe/assets/622192/0cdc92e
 
 This is a bundle extension that contains a middleware hook that [verifies the `Stripe-Signature` header](https://docs.stripe.com/webhooks#verify-webhook-signatures-with-official-libraries), and an operation node that injects the Stripe secret key into a flow so you can make API requests with the request node e.g. `GET https://{{stripe_secret_key}}:@api.stripe.com/v1/customers/{{stripe_customer_id}}`.
 
-Check out the [example](example/README.md) for more details.
+Check out the [example](example) for more details.
 
 ## Setup Instructions
 
