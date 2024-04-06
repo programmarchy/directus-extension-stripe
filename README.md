@@ -27,3 +27,6 @@ Or you can configure these variables on the Settings page in Directus:
 ### Marketplace
 
 Currently, this extension is not sandboxed so it won't appear in the Directus Marketplace by default. However, you can set `MARKETPLACE_TRUST="all"` so the extension becomes visible.
+
+### Collaboration
+TODO: Write an article in Directus developer blog ([READ more...](https://github.com/directus-labs/guest-authoring/issues/126)) about delivery `direct-extension-stripe` via aws lightsail server using cloudron server management service.
