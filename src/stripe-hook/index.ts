@@ -16,9 +16,13 @@ type StripeWebhookUser = {
   id: string;
   role: {
     id: string;
-    admin_access: boolean;
-    app_access: boolean;
-  };
+    policies: {
+      policy: {
+        app_access: boolean;
+        admin_access: boolean;
+      };
+    }[];
+  },
 };
 
 type StripeWebhook = {
@@ -83,7 +87,7 @@ export default defineHook(({ init }, { env, database, services, logger, getSchem
           }
         }
       })(req, res, async () => {
-        if (!(rawBody && stripeSignature)) {
+        if (!(stripeSignature && rawBody)) {
           return next();
         }
 
@@ -120,9 +124,8 @@ export default defineHook(({ init }, { env, database, services, logger, getSchem
         'stripe_secret_key',
         'stripe_webhook_user.id',
         'stripe_webhook_user.role.id',
-        'stripe_webhook_user.role.admin_access',
-        'stripe_webhook_user.role.app_access',
-        'stripe_webhooks.*',
+        'stripe_webhook_user.role.policies.policy.app_access',
+        'stripe_webhook_user.role.policies.policy.admin_access',
       ],
     });
 
@@ -155,11 +158,16 @@ export default defineHook(({ init }, { env, database, services, logger, getSchem
 
     const stripeWebhookUser = stripeSettings.stripe_webhook_user;
     if (!req.get('authorization') && stripeWebhookUser) {
+
+      //check if any of the policies within the users role has app_access or admin_access
+      const app_access = !!stripeWebhookUser.role.policies.find((policy) => policy.policy.app_access);
+      const admin_access = !!stripeWebhookUser.role.policies.find((policy) => policy.policy.admin_access);
+
       const token = jwt.sign({
         id: stripeWebhookUser.id,
         role: stripeWebhookUser.role.id,
-        app_access: stripeWebhookUser.role.app_access,
-        admin_access: stripeWebhookUser.role.admin_access,
+        app_access,
+        admin_access,
       }, env['SECRET'] as string, {
         issuer: 'directus',
         expiresIn: env['ACCESS_TOKEN_TTL'],
