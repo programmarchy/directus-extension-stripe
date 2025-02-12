@@ -158,16 +158,13 @@ export default defineHook(({ init }, { env, database, services, logger, getSchem
 
     const stripeWebhookUser = stripeSettings.stripe_webhook_user;
     if (!req.get('authorization') && stripeWebhookUser) {
-
-      //check if any of the policies within the users role has app_access or admin_access
-      const app_access = !!stripeWebhookUser.role.policies.find((policy) => policy.policy.app_access);
-      const admin_access = !!stripeWebhookUser.role.policies.find((policy) => policy.policy.admin_access);
-
+      const { id, role } = stripeWebhookUser;
+      const { policies } = role;
       const token = jwt.sign({
-        id: stripeWebhookUser.id,
-        role: stripeWebhookUser.role.id,
-        app_access,
-        admin_access,
+        id,
+        role: role.id,
+        app_access: policies.some(({ policy }) => policy.app_access),
+        admin_access: policies.some(({ policy }) => policy.admin_access),
       }, env['SECRET'] as string, {
         issuer: 'directus',
         expiresIn: env['ACCESS_TOKEN_TTL'],
